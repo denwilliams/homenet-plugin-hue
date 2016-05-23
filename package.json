@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "homenet-core": "^4.0.0-alpha.2",
+    "node-hue-api": "^2.2.0"
+  },
+  "name": "homenet-plugin-hue",
+  "description": "Philips Hue plugin for Homenet",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denwilliams/homenet-plugin-hue.git"
+  },
+  "author": "Den Williams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/denwilliams/homenet-plugin-hue/issues"
+  },
+  "homepage": "https://github.com/denwilliams/homenet-plugin-hue#readme",
+  "keywords": [
+    "hue",
+    "homenet"
+  ]
+}
