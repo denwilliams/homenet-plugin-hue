@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "homenet-core": "^4.0.0-alpha.2",
+    "homenet-core": "^4.0.0-alpha.14",
     "node-hue-api": "^2.2.0"
   },
   "name": "homenet-plugin-hue",
   "description": "Philips Hue plugin for Homenet",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "devDependencies": {},
   "scripts": {
