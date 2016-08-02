@@ -8,51 +8,64 @@ var X_WARM = 500;
 var BRIGHT = 250;
 
 // HUES
-var BLOOD_ORANGE = 350;
+const HUE = {
+  BLOOD_ORANGE: 350,
+  RED: 0,
+  GREEN: 145,
+  BLUE: 250,
+  PURPLE: 280
+}
 
-// BRIGHTNESS
-var MAX = 100;
-var HIGH = 75;
-var MED = 50;
-var LOW = 25;
-var MIN = 1;
+const BRIGHTNESS = {
+  MAX: 100,
+  HIGH: 75,
+  MED: 50,
+  LOW: 25,
+  MIN: 1
+};
 
-var MODES = {
+const SATURATION = {
+  MAX: 100,
+  HIGH: 75,
+  MED: 50,
+  LOW: 25,
+  MIN: 1
+};
 
-  'bright':   lightState.create().on().white(BRIGHT, MAX),
-  'warm':     lightState.create().on().white(X_WARM, MAX),
-  'full':     lightState.create().on().white(MID, MAX),
+let MODES: any = {
+  'bright':   lightState.create().on().white(BRIGHT, BRIGHTNESS.MAX),
+  'warm':     lightState.create().on().white(X_WARM, BRIGHTNESS.MAX),
+  'full':     lightState.create().on().white(MID, BRIGHTNESS.MAX),
 
-  'high':     hue.lightState.create().on().white(WARM, HIGH),
+  'high':     hue.lightState.create().on().white(WARM, BRIGHTNESS.HIGH),
 
-  'medium':   hue.lightState.create().on().white(WARM, MED),
-  'med':      hue.lightState.create().on().white(WARM, MED),
+  'medium':   hue.lightState.create().on().white(WARM, BRIGHTNESS.MED),
+  'med':      hue.lightState.create().on().white(WARM, BRIGHTNESS.MED),
 
-  'low':      hue.lightState.create().on().white(WARM, LOW),
+  'low':      hue.lightState.create().on().white(WARM, BRIGHTNESS.LOW),
 
-  'minimum':  hue.lightState.create().on().white(WARM, MIN),
-  'min':      hue.lightState.create().on().white(WARM, MIN),
+  'minimum':  hue.lightState.create().on().white(WARM, BRIGHTNESS.MIN),
+  'min':      hue.lightState.create().on().white(WARM, BRIGHTNESS.MIN),
 
-  'off':      lightState.create().off(),
+  'off':     lightState.create().off(),
 
-  'movie':    lightState.create().on().hsl(BLOOD_ORANGE, MAX, LOW).transition(3000),
+  'movie':   lightState.create().on().hsl(HUE.BLOOD_ORANGE, SATURATION.MAX, BRIGHTNESS.LOW).transition(3000),
 
-  'red':     hue.lightState.create().hsl(0, 100, 100).on(),
-  'green':   hue.lightState.create().hsl(145, 100, 100).on(),
-  'blue':    hue.lightState.create().hsl(250, 100, 100).on(),
-  'purple':  hue.lightState.create().hsl(280, 100, 100).on(),
+  'red':     hue.lightState.create().hsl(HUE.RED,     SATURATION.MAX, BRIGHTNESS.MAX).on(),
+  'green':   hue.lightState.create().hsl(HUE.GREEN,   SATURATION.MAX, BRIGHTNESS.MAX).on(),
+  'blue':    hue.lightState.create().hsl(HUE.BLUE,    SATURATION.MAX, BRIGHTNESS.MAX).on(),
+  'purple':  hue.lightState.create().hsl(HUE.PURPLE,  SATURATION.MAX, BRIGHTNESS.MAX).on(),
 
-  'party':    hue.lightState.create().on().hsl(0, 100, 100).effect('colorloop'),
+  'party':    hue.lightState.create().on().hsl(HUE.RED, SATURATION.MAX, BRIGHTNESS.MAX).effect('colorloop'),
 
-  'test':     hue.lightState.create().on().hsl(300, 100, 60).effect('none').transition(5000),
+  'test':     hue.lightState.create().on().hsl(300, SATURATION.MAX, 60).effect('none').transition(5000),
   'test2':    hue.lightState.create().alert().white(500, 10)
 };
 
-// modes.fadelow = modes.low.transition(5000);
-// modes.fadeoff = modes.off.transition(20000);
-// modes.redalert = modes.red.alert('lselect');
-// modes.greenalert = modes.green.alert('lselect');
-// modes.bluealert = modes.blue.alert('lselect');
-// modes.purplealert = modes.purple.alert('lselect');
-
+MODES.fadelow = MODES.low.transition(5000);
+MODES.fadeoff = MODES.off.transition(20000);
+MODES.redalert = MODES.red.alert('lselect');
+MODES.greenalert = MODES.green.alert('lselect');
+MODES.bluealert = MODES.blue.alert('lselect');
+MODES.purplealert = MODES.purple.alert('lselect');
 export = MODES;
