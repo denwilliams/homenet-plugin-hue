@@ -1,6 +1,6 @@
 /// <reference path="./hue-api.d.ts"/>
 
-import { ILight, ILogger } from 'homenet-core';
+import { ILightSwitch, ILogger } from 'homenet-core';
 
 const hue = require('node-hue-api');
 const HueApi = hue.HueApi;
@@ -10,50 +10,31 @@ import HueController = require('./hue-controller');
 import STATES = require('./hue-states');
 import {EventEmitter} from 'events';
 
-class HueLight extends EventEmitter implements ILight {
-  // hub: any;
-  // id: string;
+class HueLight extends EventEmitter implements ILightSwitch {
   state: string;
-  // emitOnSet: boolean = true;
 
-  private _setLightState : Function;
-  private _controller: HueController;
-  private _logger: ILogger;
+  private setLightState : Function;
 
-  constructor(id : string, opts : any, controller: HueController, logger: ILogger) {
+  constructor(id : string, opts : any, controller: HueController, private logger: ILogger) {
     super();
 
-    this._logger = logger;
     this.state = 'unknown';
 
     const hubId = opts.hub;
     const groupId = opts.groupId;
 
-    this._setLightState = (controller.setGroupLightState).bind(controller, hubId, groupId);
+    this.setLightState = (controller.setGroupLightState).bind(controller, hubId, groupId);
   }
 
   set(value: string|boolean) {
     this.state  = value === true ? 'full' : <string>value;
-    this._logger.info('SET HUE LIGHT STATE TO ' + value);
-    this._setLightState(getLightStateForValue(value));
+    this.logger.info('SET HUE LIGHT STATE TO ' + value);
+    this.setLightState(getLightStateForValue(value));
   }
 
   get() : string {
     return this.state;
   }
-
-  turnOn() {
-    this.set('full');
-  }
-
-  turnOff() {
-    this.set('off');
-  }
-
-  emitValue(value: boolean|string|number) : void {
-    // TODO:
-  }
-
 }
 
 function getLightStateForValue(value: string|boolean) : string {

@@ -1,1 +1,1 @@
-export {HuePluginLoader} from './loader';
+export { HuePluginLoader } from './loader';
