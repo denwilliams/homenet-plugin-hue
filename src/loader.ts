@@ -2,16 +2,8 @@
 
 import {plugin, service, IPluginLoader, ILogger, IConfig, ILightsManager, ILightSwitch, ILightSwitchFactory} from 'homenet-core';
 
-// var hue = require('node-hue-api');
-// var lightState = hue.lightState;
-
-// import HueLight = require('./hue-light')
 import HueController = require('./hue-controller');
 import HueLight = require('./hue-light');
-
-
-// import lightFactory = require('./lights');
-// import createLockFactory = require('./lock');
 
 @plugin()
 export class HuePluginLoader implements IPluginLoader {
