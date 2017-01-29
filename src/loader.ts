@@ -1,6 +1,6 @@
 /// <reference path="./hue-api.d.ts"/>
 
-import {plugin, service, IPluginLoader, ILogger, IConfig, ILightsManager, ISettable, IClassTypeFactory} from 'homenet-core';
+import {plugin, service, IPluginLoader, ILogger, IConfig, ILightsManager, ISettable, IClassTypeFactory} from '@homenet/core';
 
 import HueController = require('./hue-controller');
 import HueLight = require('./hue-light');

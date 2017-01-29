@@ -1,6 +1,6 @@
 /// <reference path="./hue-api.d.ts"/>
 
-import { ISettable, ILogger } from 'homenet-core';
+import { ISettable, ILogger } from '@homenet/core';
 
 const hue = require('node-hue-api');
 const HueApi = hue.HueApi;

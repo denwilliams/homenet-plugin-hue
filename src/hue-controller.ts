@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import { Dict, ILogger, IConfig } from 'homenet-core';
+import { Dict, ILogger, IConfig } from '@homenet/core';
 
 const hue = require('node-hue-api');
 // import hueHub = require('./hue-hub');
