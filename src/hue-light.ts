@@ -11,25 +11,28 @@ import STATES = require('./hue-states');
 import {EventEmitter} from 'events';
 
 class HueLight extends EventEmitter implements ISettable {
-  state: string;
-
+  private state: string;
+  private hubId: string;
   private setLightState : Function;
 
-  constructor(id : string, opts : any, controller: HueController, private logger: ILogger) {
+  constructor(public id : string, opts : any, controller: HueController, private logger: ILogger) {
     super();
 
     this.state = 'unknown';
 
-    const hubId = opts.hub;
+    this.hubId = opts.hub;
     const groupId = opts.groupId;
 
-    this.setLightState = (controller.setGroupLightState).bind(controller, hubId, groupId);
+    this.setLightState = (controller.setGroupLightState).bind(controller, this.hubId, groupId);
   }
 
   set(value: string|boolean) {
-    this.state  = value === true ? 'full' : <string>value;
-    this.logger.info('SET HUE LIGHT STATE TO ' + value);
-    this.setLightState(getLightStateForValue(value));
+    const state = this.state  = value === true ? 'full' : <string>value;
+    this.logger.info('Hue light set to ' + state);
+    const lightState = getLightStateForValue(state);
+    this.setLightState(lightState);
+    this.emit('update', state);
+    // TODO: poll for changes when light is turned on from external switch/app
   }
 
   get() : string {
