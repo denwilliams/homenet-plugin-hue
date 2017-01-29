@@ -1,5 +1,5 @@
 {
-  "name": "homenet-plugin-hue",
+  "name": "@homenet/plugin-hue",
   "description": "Philips Hue plugin for Homenet",
   "version": "0.0.6",
   "main": "lib/index.js",
