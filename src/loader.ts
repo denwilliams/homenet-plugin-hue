@@ -1,6 +1,6 @@
 /// <reference path="./hue-api.d.ts"/>
 
-import {plugin, service, IPluginLoader, ILogger, IConfig, ILightsManager, ILightSwitch, ILightSwitchFactory} from 'homenet-core';
+import {plugin, service, IPluginLoader, ILogger, IConfig, ILightsManager, ISettable, IClassTypeFactory} from 'homenet-core';
 
 import HueController = require('./hue-controller');
 import HueLight = require('./hue-light');
@@ -14,15 +14,15 @@ export class HuePluginLoader implements IPluginLoader {
           @service('ILightsManager') private lights: ILightsManager,
           @service('ILogger') private logger: ILogger) {
     this.controller = new HueController(config, logger);
-    const lightFactory: ILightSwitchFactory = this.hueLightFactory.bind(this);
-    lights.addType('hue', lightFactory);
+    const lightFactory: IClassTypeFactory<ISettable> = this.hueLightFactory.bind(this);
+    lights.addSettableType('hue', lightFactory);
   }
 
   load() : void {
     this.logger.info('Loading hue lights');
   }
 
-  private hueLightFactory(id : string, opts : any) : ILightSwitch {
+  private hueLightFactory(id : string, opts : any) : ISettable {
     this.logger.info('Adding Hue light: ' + id);
     return new HueLight(id, opts, this.controller, this.logger);
   }

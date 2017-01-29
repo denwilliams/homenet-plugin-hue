@@ -1,6 +1,6 @@
 /// <reference path="./hue-api.d.ts"/>
 
-import { ILightSwitch, ILogger } from 'homenet-core';
+import { ISettable, ILogger } from 'homenet-core';
 
 const hue = require('node-hue-api');
 const HueApi = hue.HueApi;
@@ -10,7 +10,7 @@ import HueController = require('./hue-controller');
 import STATES = require('./hue-states');
 import {EventEmitter} from 'events';
 
-class HueLight extends EventEmitter implements ILightSwitch {
+class HueLight extends EventEmitter implements ISettable {
   state: string;
 
   private setLightState : Function;
