@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '4'
+before_install:
+- rm -rf lib/
+- npm install
+- npm install -g typescript@2.1.5
+- tsc
+deploy:
+  provider: npm
+  email: work@denwilliams.net
+  on:
+    tags: true
+    repo: denwilliams/homenet-plugin-hue
+  api_key:
+    secure: iVhaWepXtVmqUFwIm5Koh2juVUVQJvaqCMNBtf0DlHCNSxrp3gfI7D6PwkKOXss6gxftrZXygHVVUOPgN1irf+fVIUaWQFDP+YuVaSzzX9ddgWYFOH+CWzNGTbSdGsOnhAzzUHnlG88DsScdBqzxVPu5e4gASqFwkSLc3S2hETY+8QdExJeq/LjuIZXDLrDWT/ievFFtLP1C5JM/h2R03nhk86FdYL40UYZglrVoelHHvhsyEcVH8ZdVXAci63jrJ9D/Link/7tvrBM6H+P4CjYQ3t2thqvvoPL17xPaXCvvpyV0g0oQF/uhy4drqaZde+97TOa01qpYi2f1U9boSMkmVFMu7Z+UK1pawteUqb+Vnxme0KRXccm7cbaF2wypH0j1LKYCbjL/+SfesjKixaQYcyeLpyY1XfPJY8/TDXweY7YR8L1tECXykaZQUGBDPTu/T6gAmTSQhFhhCwT4OUk8MLseN4UQ6UsD6YJDgbTj09DTdf7fnYS/SzN8GG3ouldEWGHXRVciW/63jQauWG4rYDZt/8bhIfpx6G64iNuntaBbH49v8SjgxyPPO0+8Ms7kZScMHWY49/qKMLLPptzT+dpz7qTM0U6vGYvzynGmGIUNxulMwb0hYL8mDLQdwHo5TJUhjJFDBMWnYDNMSvNeZd8+HABmUJjoxMbTMYU=
