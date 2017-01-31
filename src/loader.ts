@@ -2,8 +2,8 @@
 
 import {plugin, service, IPluginLoader, ILogger, IConfig, ILightsManager, ISettable, IClassTypeFactory} from '@homenet/core';
 
-import HueController = require('./hue-controller');
-import HueLight = require('./hue-light');
+import { HueController } from './hue-controller';
+import { HueLight } from './hue-light';
 
 @plugin()
 export class HuePluginLoader implements IPluginLoader {

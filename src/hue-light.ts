@@ -6,11 +6,11 @@ const hue = require('node-hue-api');
 const HueApi = hue.HueApi;
 const lightState = hue.lightState;
 
-import HueController = require('./hue-controller');
-import STATES = require('./hue-states');
-import {EventEmitter} from 'events';
+import { HueController } from './hue-controller';
+import { STATES } from './hue-states';
+import { EventEmitter } from 'events';
 
-class HueLight extends EventEmitter implements ISettable {
+export class HueLight extends EventEmitter implements ISettable {
   private state: string;
   private hubId: string;
   private setLightState : Function;
@@ -45,5 +45,3 @@ function getLightStateForValue(value: string|boolean) : string {
   if (value === false) return lightState.create().turnOff();
   return STATES[<string> value];
 }
-
-export = HueLight;

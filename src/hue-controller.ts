@@ -8,22 +8,19 @@ const HueApi = hue.HueApi;
 
 interface IHubConfig {id:string, name:string, host:string, key:string}
 
-class HueController {
+export class HueController {
+  private hubs: Dict<IHueApi>;
 
-  private _hubs: Dict<IHueApi>;
-  private _logger: ILogger;
-
-  constructor(config: IConfig, logger: ILogger) {
-    this._hubs = createHubs(config.hue.hubs, logger);
-    this._logger = logger;
+  constructor(config: IConfig, private logger: ILogger) {
+    this.hubs = createHubs(config.hue.hubs, logger);
   }
 
   getHub(hubId: string) : IHueApi {
-    return this._hubs[hubId];
+    return this.hubs[hubId];
   }
 
   setGroupLightState(hubId: string, groupId: string, value: any) : void {
-    this._logger.info('Setting light for ' + hubId + groupId);
+    this.logger.info('Setting light for ' + hubId + groupId);
     this.getHub(hubId).setGroupLightState(groupId, value);
   }
 }
@@ -49,5 +46,3 @@ function createHubs(hubs: Array<IHubConfig>, logger: ILogger) : Dict<IHueApi> {
 function createHub(host: string, key: string) : IHueApi {
   return new HueApi(host, key);
 }
-
-export = HueController;

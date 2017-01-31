@@ -4,7 +4,7 @@
   "version": "0.0.8",
   "main": "lib/index.js",
   "dependencies": {
-    "node-hue-api": "^2.2.0"
+    "node-hue-api": "^2.4.1"
   },
   "devDependencies": {
     "@homenet/core-tsd": "^4.0.0-beta.8a",
