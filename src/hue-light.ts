@@ -22,8 +22,10 @@ export class HueLight extends EventEmitter implements ISettable {
 
     this.hubId = opts.hub;
     const groupId = opts.groupId;
+    const lightId = opts.lightId;
 
-    this.setLightState = (controller.setGroupLightState).bind(controller, this.hubId, groupId);
+    if (groupId) this.setLightState = (controller.setGroupLightState).bind(controller, this.hubId, groupId);
+    else this.setLightState = (controller.setLightState).bind(controller, this.hubId, lightId);
   }
 
   set(value: string|boolean) {

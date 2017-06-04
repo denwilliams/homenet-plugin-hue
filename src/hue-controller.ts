@@ -23,6 +23,11 @@ export class HueController {
     this.logger.info('Setting light for ' + hubId + groupId);
     this.getHub(hubId).setGroupLightState(groupId, value);
   }
+
+  setLightState(hubId: string, lightId: string, value: any) : void {
+    this.logger.info('Setting light for ' + hubId + lightId);
+    this.getHub(hubId).setLightState(lightId, value);
+  }
 }
 
 function createHubs(hubs: Array<IHubConfig>, logger: ILogger) : Dict<IHueApi> {
