@@ -12,7 +12,7 @@ export class HueController {
   private hubs: Dict<IHueApi>;
 
   constructor(config: IConfig, private logger: ILogger) {
-    this.hubs = createHubs(config.hue.hubs, logger);
+    this.hubs = createHubs((config.hue && config.hue.hubs) || [], logger);
   }
 
   getHub(hubId: string) : IHueApi {
