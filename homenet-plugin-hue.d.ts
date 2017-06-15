@@ -1,4 +1,4 @@
 declare module 'homenet-plugin-hue' {
   import {IPluginLoader} from '@homenet/core';
-  export var HuePluginLoader: new (...args: any[]) => IPluginLoader
+  export function create(annotate: any): { HuePluginLoader: new (...args: any[]) => IPluginLoader }
 }
