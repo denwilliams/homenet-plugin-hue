@@ -1,7 +1,7 @@
 {
   "name": "@homenet/plugin-hue",
   "description": "Philips Hue plugin for Homenet",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "lib/index.js",
   "dependencies": {
     "node-hue-api": "^2.4.2"
